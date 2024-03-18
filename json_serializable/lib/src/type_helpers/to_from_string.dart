@@ -15,7 +15,7 @@ final bigIntString = ToFromStringHelper(
 
 final dateTimeString = ToFromStringHelper(
   'DateTime.parse',
-  'toIso8601String()',
+  'toUtc().toIso8601String()',
   'DateTime',
   '.toLocal()',
 );
@@ -51,7 +51,7 @@ class ToFromStringHelper {
   final TypeChecker _checker;
 
   ToFromStringHelper(this._parse, this._toString, this.coreTypeName, [this._afterParse = ''])
-      : _checker = TypeChecker.fromUrl('dart:core#$coreTypeName');
+   : _checker = TypeChecker.fromUrl('dart:core#$coreTypeName');
 
   bool matches(DartType type) => _checker.isExactlyType(type);
 
