@@ -12,3 +12,4 @@ workspace:
   - example
   - json_annotation
   - json_serializable
+  - shared_test
