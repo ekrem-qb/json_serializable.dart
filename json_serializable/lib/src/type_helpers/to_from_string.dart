@@ -17,6 +17,7 @@ final dateTimeString = ToFromStringHelper(
   'DateTime.parse',
   'toIso8601String()',
   'DateTime',
+  '.toLocal()',
 );
 
 final uriString = ToFromStringHelper(
