@@ -40,10 +40,16 @@ class ToFromStringHelper {
   ///
   /// Examples: `toString()` for a function or `stringValue` for a property.
   final String _toString;
+
+  /// Represents an invocation – function call – on an
+  /// instance of the target type that does something after parsing.
+  ///
+  /// Examples: `toLocal()`.
+  final String _afterParse;
   final String coreTypeName;
   final TypeChecker _checker;
 
-  ToFromStringHelper(this._parse, this._toString, this.coreTypeName)
+  ToFromStringHelper(this._parse, this._toString, this.coreTypeName, [this._afterParse = ''])
       : _checker = TypeChecker.fromUrl('dart:core#$coreTypeName');
 
   bool matches(DartType type) => _checker.isExactlyType(type);
@@ -76,7 +82,7 @@ class ToFromStringHelper {
 
     final parseParam = isString ? expression : '$expression as String';
 
-    final output = '$_parse($parseParam)';
+    final output = '$_parse($parseParam)$_afterParse';
 
     return DefaultContainer(
       expression,
