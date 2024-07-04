@@ -69,7 +69,7 @@ mixin EncodeHelper implements HelperCore {
     assert(config.createJsonKeys);
 
     final buffer = StringBuffer(
-      'abstract final class _\$${element.name.nonPrivate}JsonKeys {',
+      'abstract final class ${element.name.nonPrivate}JsonKeys {',
     );
     // ..write('static const _\$${element.name.nonPrivate}JsonKeys();');
 
