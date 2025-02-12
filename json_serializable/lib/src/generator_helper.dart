@@ -106,6 +106,8 @@ class GeneratorHelper extends HelperCore with EncodeHelper, DecodeHelper {
       accessibleFieldSet = fieldsToUse.toSet();
     }
 
+    final allFields = {...accessibleFieldSet};
+
     accessibleFieldSet
       ..removeWhere(
         (element) => jsonKeyFor(element).explicitNoToJson,
@@ -129,11 +131,11 @@ class GeneratorHelper extends HelperCore with EncodeHelper, DecodeHelper {
       );
 
     if (config.createFieldMap) {
-      yield createFieldMap(accessibleFieldSet);
+      yield createFieldMap(allFields);
     }
 
     if (config.createJsonKeys) {
-      yield createJsonKeys(accessibleFieldSet);
+      yield createJsonKeys(allFields);
     }
 
     if (config.createPerFieldToJson) {
